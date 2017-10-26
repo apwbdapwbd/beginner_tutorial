@@ -1,0 +1,10 @@
+viki@ubuntu:~/catkin_ws/src$ cppcheck --enable=all --check-config --std=c++11 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
+(information) Couldn't find path given by -I 'include/'
+Checking beginner_tutorials/src/listener.cpp...
+[beginner_tutorials/src/listener.cpp:1]: (information) Include file: "ros/ros.h" not found.
+[beginner_tutorials/src/listener.cpp:2]: (information) Include file: "std_msgs/String.h" not found.
+1/2 files checked 44% done
+Checking beginner_tutorials/src/talker.cpp...
+[beginner_tutorials/src/talker.cpp:1]: (information) Include file: "ros/ros.h" not found.
+[beginner_tutorials/src/talker.cpp:2]: (information) Include file: "std_msgs/String.h" not found.
+2/2 files checked 100% done
