@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -54,11 +55,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+ add_service_files(
+   FILES
+   AddTwoInts.srv
+ChangeString.srv
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -68,10 +69,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -208,3 +209,15 @@ add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
+
+add_executable(changeString src/ChangeString.cpp)
+target_link_libraries(changeString ${catkin_LIBRARIES})
+add_dependencies(changeString beginner_tutorials_gencpp)
+
+#add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+#target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
+#add_dependencies(add_two_ints_server beginner_tutorials_gencpp)
+
+#add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+#target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
+#add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
