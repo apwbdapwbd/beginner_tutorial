@@ -12,6 +12,7 @@
 #include "beginner_tutorials/ChangeString.h"
 
 std::stringstream ss;
+int feqRate=20; 
 
 bool change(beginner_tutorials::ChangeString::Request  &req,
             beginner_tutorials::ChangeString::Response &res)
@@ -30,9 +31,13 @@ bool change(beginner_tutorials::ChangeString::Request  &req,
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
+  ros::NodeHandle home("~"); 
+  home.getParam("feq",feqRate);
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   ros::ServiceServer service = n.advertiseService("ChangeString", change);
-  ros::Rate loop_rate(10);
+
+
+  ros::Rate loop_rate(feqRate);
   int count = 0;
   while (ros::ok()) {
     std_msgs::String msg;    
