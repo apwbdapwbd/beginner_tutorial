@@ -26,14 +26,18 @@ bool change(beginner_tutorials::ChangeString::Request &req,
     res.what = "Now change to: Michael";
     ss << " Michael ";
   }
+else{
   if (req.num == 2) {
     res.what = "Now change to: Michael Kam";
     ss << " Michael Kam ";
-  } else {
-    ROS_ERROR("usage: [changeString 1] or [changeString 2]");
   }
+  else{
+    ROS_ERROR("usage only 1 or 2");
+  }
+}
   return true;
 }
+
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");

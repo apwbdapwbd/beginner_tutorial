@@ -4,23 +4,24 @@
 
 branch:Week10_HW
 
-This is a small ROS project that shows a node publishing message to a topic and a node subscribing message from that topic. In addition, the a service was added to the publisher node to change the published message.
+This is a ROS package that shows a node publishing message to a topic and a node subscribing message from that topic. In addition, the a service was added to the publisher node to change the published message.
 
-## Installation
+## Installation of package
 
-In your catkin workspace directory (or create a new one), checkout the repo (and submodules)
+In your catkin workspace directory (or create a new one)
 ```
 git clone --recursive https://github.com/michael081906/beginner_tutorial.git
+cd ./beginner_tutorial
 git checkout Week10_HW
 ```
 
-## Build
+## Build the package
 
 At catkin workspace 
 ```
+cd ~/catkin_ws
 catkin_make 
 ```
-which build the project
 
 ## Run
  
@@ -40,9 +41,22 @@ which runs a listener node.
 
 ## Run ros launch
 
+```
+roslaunch beginner_tutorials beginner_tutorial.launch freq:=15
+```
+where freq is a argument of publisher frequency
+
 ## Service
 
-
+Make sure the talker has been launch, then enter either
+```
+rosservice call /ChangeString "num: 1"
+```
+or
+```
+rosservice call /ChangeString "num: 2"
+```
+to change the message published by talker.
 
 ## Dependencis
 
