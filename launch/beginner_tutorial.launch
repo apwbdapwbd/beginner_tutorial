@@ -1,0 +1,13 @@
+<launch>
+	<!-- declare arg to be passed in -->
+        <arg name="freq" /> 
+
+        <node pkg="beginner_tutorials" type="talker" name="talker">
+        <param name="feq" value="$(arg freq)"/>
+	</node>
+
+	<node pkg="beginner_tutorials" type="listener" name="listener">
+	</node>
+
+	
+</launch>
