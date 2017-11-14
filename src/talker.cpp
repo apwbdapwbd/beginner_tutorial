@@ -1,12 +1,14 @@
 // "Copyright [2017] <Michael Kam>"
 /** @file talker.cpp
- *  @brief talker.cpp is a node that publish string message to chatter topic.
+ *  @brief talker.cpp is a node that publish string message to chatter topic. In addition, this node
+ *  will now send a tf transformation as well.
  *
  *  @author Michael Kam (michael081906)
  *  @bug No known bugs.
  *  @copyright GNU Public License.
  */
 #include <ros/console.h>
+#include <tf/transform_broadcaster.h>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/ChangeString.h"
@@ -46,8 +48,17 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(feqRate);
   ROS_WARN("If the feq didn't assigned, it will use default 10 Hz as feq");
   int count = 0;
+
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  transform.setOrigin(tf::Vector3(1.0, 2.0, 3.0));
+  tf::Quaternion q;
+  q.setRPY(0, 0, 0.7);
+  transform.setRotation(q);
   if (ros::ok()) {
     while (ros::ok()) {
+      br.sendTransform(
+          tf::StampedTransform(transform, ros::Time::now(), "world", "talker"));
       std_msgs::String msg;
       msg.data = ss.str();
       ROS_INFO("%s", msg.data.c_str());
