@@ -1,6 +1,11 @@
 <launch>
 	<!-- declare arg to be passed in -->
         <arg name="freq" /> 
+        <arg name="rosbag" /> 
+
+        <group if="$(arg rosbag)">
+        <node name="record_topics_for_verification" pkg="rosbag" type="record" args="-a" output="screen"/>
+        </group>
 
         <node pkg="beginner_tutorials" type="talker" name="talker">
         <param name="feq" value="$(arg freq)"/>

@@ -1,10 +1,15 @@
+-----------------------------------------------------------------------------------------
+HW9
+-----------------------------------------------------------------------------------------
 cppcheck --enable=all --std=c++11 -I include/ -I ../../../../../opt/ros/kinetic/include/ -I ../../../../../usr/include/ --check-config --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
 Checking src/listener.cpp...
 1/2 files checked 44% done
 Checking src/talker.cpp...
 2/2 files checked 100% done
 
---------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+HW10
+-----------------------------------------------------------------------------------------
 
 viki@ubuntu:~/catkin_ws/src/beginner_tutorial$ cppcheck --enable=all --std=c++11 -I ../../devel/include/ -I ../../../../../opt/ros/kinetic/include/ -I ../../../../../usr/include/ --check-config --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
 Checking src/ChangeString.cpp...
@@ -13,5 +18,20 @@ Checking src/listener.cpp...
 2/3 files checked 47% done
 Checking src/talker.cpp...
 3/3 files checked 100% done
+
+-----------------------------------------------------------------------------------------
+HW11
+-----------------------------------------------------------------------------------------
+
+viki@ubuntu:~/catkin_ws/src/beginner_tutorials$ cppcheck --enable=all --std=c++11 -I ../../devel/include/ -I ../../../../../opt/ros/kinetic/include/ -I ../../../../../usr/include/ --check-config --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
+Checking src/ChangeString.cpp...
+1/4 files checked 19% done
+Checking src/listener.cpp...
+2/4 files checked 37% done
+Checking src/talker.cpp...
+3/4 files checked 77% done
+Checking test/talkerTest.cpp...
+4/4 files checked 100% done
+
 
 

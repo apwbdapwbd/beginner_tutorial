@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
     return 1;
   }
   ros::NodeHandle n;
-  ros::ServiceClient client = n.serviceClient < beginner_tutorials::ChangeString
-      > ("ChangeString");
+  ros::ServiceClient client = n.serviceClient<beginner_tutorials::ChangeString>(
+      "ChangeString");
   beginner_tutorials::ChangeString srv;
   srv.request.num = atoll(argv[1]);
   if (client.call(srv)) {

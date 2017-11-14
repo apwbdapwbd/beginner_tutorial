@@ -25,27 +25,23 @@ bool change(beginner_tutorials::ChangeString::Request &req,
   if (req.num == 1) {
     res.what = "Now change to: Michael";
     ss << " Michael ";
+  } else {
+    if (req.num == 2) {
+      res.what = "Now change to: Michael Kam";
+      ss << " Michael Kam ";
+    } else {
+      ROS_ERROR("usage only 1 or 2");
+    }
   }
-else{
-  if (req.num == 2) {
-    res.what = "Now change to: Michael Kam";
-    ss << " Michael Kam ";
-  }
-  else{
-    ROS_ERROR("usage only 1 or 2");
-  }
-}
   return true;
 }
-
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
   ros::NodeHandle home("~");
   home.getParam("feq", feqRate);
-  ros::Publisher chatter_pub = n.advertise < std_msgs::String
-      > ("chatter", 1000);
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   ros::ServiceServer service = n.advertiseService("ChangeString", change);
   ros::Rate loop_rate(feqRate);
   ROS_WARN("If the feq didn't assigned, it will use default 10 Hz as feq");
