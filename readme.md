@@ -66,6 +66,7 @@ cd ~/catkin_ws
 catkin_make run_tests
 rostest beginner_tutorials beginner_tutorialTest.launch
 ```
+If the test fail with no reason, try to re-run the test after several seconds. 
 
 ## TF
 
