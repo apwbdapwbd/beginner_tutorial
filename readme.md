@@ -2,7 +2,7 @@
 
 ## Overview
 
-branch:Week10_HW
+branch:Week11_HW-1
 
 This is a ROS package that shows a node publishing message to a topic and a node subscribing message from that topic. In addition, the a service was added to the publisher node to change the published message.
 
